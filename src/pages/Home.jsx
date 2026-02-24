@@ -49,7 +49,7 @@ export default function Home() {
               fontSize: { xs: "1rem", md: "1.15rem" },
             }}
           >
-            Yours global eSIM. Trusted by travelers, enterprises, and travel
+            Your global eSIM. Trusted by travelers, enterprises, and travel
             brands worldwide.
           </Typography>
 
