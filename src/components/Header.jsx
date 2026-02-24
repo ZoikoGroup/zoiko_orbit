@@ -14,6 +14,8 @@ import {
   Menu,
   MenuItem,
   Collapse,
+  Grid,
+  Container,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -25,7 +27,7 @@ import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const TEAL = "#0e7c86";
+const TEAL = "#00708a";
 
 const navLinks = [
   { label: "Home", path: "/", dropdown: null },
@@ -57,7 +59,7 @@ const navBtnSx = {
   fontWeight: 400,
   fontSize: "0.95rem",
   px: 1.5,
-  "&:hover": { backgroundColor: "rgba(255,255,255,0.15)" },
+  //"&:hover": { backgroundColor: "rgba(255,255,255,0.15)" },
 };
 
 const mobileItemSx = {
@@ -95,30 +97,37 @@ export default function Header() {
         <Toolbar
           sx={{
             justifyContent: "space-between",
-            px: { xs: 2, md: 4 },
+            px: { xs: 2, md: 4, lg: 3 },
+            py: { xs: 1, md: 3, lg: 3 },
             minHeight: 70,
           }}
         >
           {/* Logo */}
-          <Box
-            component={Link}
-            to="/"
-            sx={{ display: "flex", alignItems: "center" }}
-          >
-            <img
-              src="/mainlogo.webp"
-              alt="Zoiko Orbit"
-              style={{ height: 44 }}
-            />
-          </Box>
+          <Container maxWidth="lg">
+            <Grid
+              container
+              size={{ xs: 12, sm: 12, md: 6, lg: 6 }}
+              alignItems="center"
+              justifyContent="space-evenly"
+            >
+              <Grid>
+                <Box
+                  component={Link}
+                  to="/"
+                  sx={{ display: "flex", alignItems: "center" }}
+                >
+                  <img
+                    src="/mainlogo.webp"
+                    alt="Zoiko Orbit"
+                    style={{ height: 44 }}
+                  />
+                </Box>
+              </Grid>
 
-          {/* Desktop Navigation */}
-          {!isMobile && (
-            <>
-              <Box sx={{ display: "flex", gap: 0.5, alignItems: "center" }}>
-                {navLinks.map(({ label, path, dropdown }) =>
+              {!isMobile &&
+                navLinks.map(({ label, path, dropdown }) =>
                   dropdown ? (
-                    <Box key={label}>
+                    <Grid key={label}>
                       <Button
                         color="inherit"
                         endIcon={<KeyboardArrowDownIcon />}
@@ -153,7 +162,7 @@ export default function Header() {
                           </MenuItem>
                         ))}
                       </Menu>
-                    </Box>
+                    </Grid>
                   ) : (
                     <Button
                       key={label}
@@ -166,9 +175,8 @@ export default function Header() {
                     </Button>
                   ),
                 )}
-              </Box>
 
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+              <Grid>
                 <Button
                   variant="outlined"
                   startIcon={<PersonOutlineIcon />}
@@ -184,21 +192,24 @@ export default function Header() {
                 >
                   My Orbit
                 </Button>
+              </Grid>
 
-                <Box
-                  sx={{
-                    cursor: "pointer",
-                    color: "white",
-                    fontWeight: 600,
-                    fontSize: "0.95rem",
-                  }}
-                >
-                  🇺🇸 EN ▲
-                </Box>
-              </Box>
-            </>
-          )}
-
+              {!isMobile && (
+                <Grid>
+                  <Box
+                    sx={{
+                      cursor: "pointer",
+                      color: "white",
+                      fontWeight: 600,
+                      fontSize: "0.95rem",
+                    }}
+                  >
+                    🇺🇸 EN ▲
+                  </Box>
+                </Grid>
+              )}
+            </Grid>
+          </Container>
           {/* Mobile Menu Icon */}
           {isMobile && (
             <IconButton color="inherit" onClick={() => setDrawerOpen(true)}>

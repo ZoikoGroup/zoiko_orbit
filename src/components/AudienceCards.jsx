@@ -40,7 +40,8 @@ export default function AudienceCards() {
                   display: "flex",
                   alignItems: "center",
                   gap: 2.5,
-                  p: { xs: 3, md: 2, lg: 4 },
+                  p: { xs: 3, md: 2, lg: 3 },
+
                   borderRadius: 4,
                   bgcolor: "background.paper",
                   cursor: "pointer",
@@ -72,11 +73,22 @@ export default function AudienceCards() {
                   <Typography
                     variant="h6"
                     fontWeight="bold"
-                    sx={{ color: "#2d3a8c", mb: 0.5 }}
+                    sx={{
+                      color: "#2d3a8c",
+                      mb: 0.5,
+                      fontSize: { xs: "1rem", md: "1.15rem", lg: "1.6rem" },
+                    }}
                   >
                     {title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontSize: { xs: "1rem", md: "1.15rem", lg: "1.1rem" },
+                      lineHeight: 1.5,
+                    }}
+                    color="text.secondary"
+                  >
                     {desc}
                   </Typography>
                 </Box>

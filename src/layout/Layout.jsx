@@ -1,11 +1,22 @@
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { Box } from "@mui/material";
+import { Outlet } from "react-router-dom";
 
-export default function Layout({ children }) {
+export default function Layout() {
   return (
-    <Box>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Header />
-      {children}
+      <Outlet />
+      {/* <Box sx={{ flex: 1 }}>{children}</Box> */}
+
+      <Footer />
     </Box>
   );
 }

@@ -1,6 +1,7 @@
 import { Box, Typography, Button, Container } from "@mui/material";
 import AudienceCards from "../components/AudienceCards";
 import Footer from "../components/Footer";
+import Plans from "../components/Plans";
 export default function Home() {
   return (
     <>
@@ -35,7 +36,7 @@ export default function Home() {
             variant="h2"
             fontWeight="bold"
             gutterBottom
-            sx={{ fontSize: { xs: "2rem", md: "3.5rem" } }}
+            sx={{ fontSize: { xs: "2rem", md: "3.5rem", lg: "4rem" } }}
           >
             Stay Connected Everywhere
           </Typography>
@@ -46,7 +47,7 @@ export default function Home() {
               mb: 5,
               fontWeight: 400,
               opacity: 0.95,
-              fontSize: { xs: "1rem", md: "1.15rem" },
+              fontSize: { xs: "1rem", md: "1.15rem", lg: "1.3rem" },
             }}
           >
             Your global eSIM. Trusted by travelers, enterprises, and travel
@@ -65,7 +66,7 @@ export default function Home() {
               variant="contained"
               size="large"
               sx={{
-                backgroundColor: "#1a2a6c",
+                backgroundColor: "#4260a6",
                 px: 4,
                 py: 1.5,
                 borderRadius: "8px",
@@ -107,8 +108,10 @@ export default function Home() {
       {/* ── Audience Cards (overlap hero bottom) ─────────────────────── */}
       <AudienceCards />
 
-      {/* ── Footer ───────────────────────────────────────────────────── */}
-      <Footer />
+      <Plans />
+
+      {/* ── Footer ─────────────────────────────────────────────────────
+      <Footer /> */}
     </>
   );
 }
