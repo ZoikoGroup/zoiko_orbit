@@ -1,6 +1,6 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
-import Layout from "./layout/layout";
+import Layout from "./layout/Layout";
 import theme from "./theme";
 
 // Main
