@@ -38,7 +38,7 @@ export default function Home() {
             gutterBottom
             sx={{ fontSize: { xs: "2rem", md: "3.5rem", lg: "4rem" } }}
           >
-            Stay Connected Everywhere
+            Stayss Connected Everywhere
           </Typography>
 
           <Typography
