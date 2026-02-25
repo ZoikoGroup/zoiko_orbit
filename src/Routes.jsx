@@ -18,7 +18,7 @@ import EcosystemPartners from "./pages/solutions/ecosystem-partners";
 import Travelers from "./pages/ecosystems/travelers";
 import TravelPartner from "./pages/ecosystems/travel-partner";
 import Impact from "./pages/ecosystems/our-impact";
-import Layout from "./Layout/layout";
+import Layout from "./layout/layout";
 export const AppRoutes = createBrowserRouter(
   createRoutesFromElements(
     <>
