@@ -18,7 +18,13 @@ import EcosystemPartners from "./pages/solutions/ecosystem-partners";
 import Travelers from "./pages/ecosystems/travelers";
 import TravelPartner from "./pages/ecosystems/travel-partner";
 import Impact from "./pages/ecosystems/our-impact";
-import Layout from "./layout/layout";
+
+// Get In Touch Pages
+import Coverage from "./pages/Coverage";
+import RefundReturns from "./pages/Refund_returns";
+
+import Layout from "./layout/layout.jsx";
+
 export const AppRoutes = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -39,6 +45,10 @@ export const AppRoutes = createBrowserRouter(
         <Route path="/ecosystem/business" element={<Enterprises />} />
         <Route path="/ecosystem/agencies" element={<TravelPartner />} />
         <Route path="/ecosystem/impact" element={<Impact />} />
+
+        {/* Get In Touch */}
+        <Route path="/coverage" element={<Coverage />} />
+        <Route path="/refund-returns" element={<RefundReturns />} />
       </Route>
     </>,
   ),

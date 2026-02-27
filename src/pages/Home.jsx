@@ -107,7 +107,7 @@ export default function Home() {
       </Box>
       {/* ── Audience Cards (overlap hero bottom) ─────────────────────── */}
       <AudienceCards />
-
+{/* ── Plans ────────────────────────────────────────────────────── */}
       <Plans />
 
       {/* ── Footer ─────────────────────────────────────────────────────
