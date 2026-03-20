@@ -1,7 +1,7 @@
 import { Box, Typography, Button, Container } from "@mui/material";
 import AudienceCards from "../components/AudienceCards";
-import Footer from "../components/Footer";
 import Plans from "../components/Plans";
+import GlobalConnectivity from "../components/GlobalConnectivity";
 export default function Home() {
   return (
     <>
@@ -107,11 +107,11 @@ export default function Home() {
       </Box>
       {/* ── Audience Cards (overlap hero bottom) ─────────────────────── */}
       <AudienceCards />
-{/* ── Plans ────────────────────────────────────────────────────── */}
+      {/* ── Plans ────────────────────────────────────────────────────── */}
       <Plans />
 
-      {/* ── Footer ─────────────────────────────────────────────────────
-      <Footer /> */}
+      {/* ── Global Connectivity ──────────────────────────────────────── */}
+      <GlobalConnectivity />
     </>
   );
 }

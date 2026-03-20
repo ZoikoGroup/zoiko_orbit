@@ -23,7 +23,7 @@ import Impact from "./pages/ecosystems/our-impact";
 import Coverage from "./pages/Coverage";
 import RefundReturns from "./pages/Refund_returns";
 
-import Layout from "./layout/layout.jsx";
+import Layout from "./layout/layout";
 
 export const AppRoutes = createBrowserRouter(
   createRoutesFromElements(
