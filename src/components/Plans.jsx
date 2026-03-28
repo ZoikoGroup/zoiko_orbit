@@ -32,34 +32,25 @@ import { useState } from "react";
 // ── constants ────────────────────────────────────────────────
 const TEAL = "#0e7c86";
 
-// const regionTabs = [
-//   "All",
-//   "Europe",
-//   "Asia Pacific",
-//   "Americas",
-//   "Middle East & CIS",
-//   "Global",
-// ];
-
 const durations = ["8 Days", "15 Days", "30 Days"];
 
 // per-region plan data keyed by duration label
 const regionPlans = {
   "Europe & UK": {
     "8 Days": [
-      { name: "Orbit Explore", data: "2 GB", price: 6, saving: 83 },
-      { name: "Orbit Group", data: "7 GB", price: 13, saving: 82 },
-      { name: "Orbit Wild", data: "15 GB", price: 20, saving: 32 },
+      { name: "Orbit Explore", data: "2 GB", price: 6, saving: 77 },
+      { name: "Orbit Group", data: "7 GB", price: 13, saving: 22 },
+      { name: "Orbit Wild", data: "15 GB", price: 20, saving: 66 },
     ],
     "15 Days": [
-      { name: "Orbit Explore", data: "3 GB", price: 9, saving: 80 },
-      { name: "Orbit Group", data: "10 GB", price: 18, saving: 78 },
-      { name: "Orbit Wild", data: "20 GB", price: 28, saving: 30 },
+      { name: "Orbit Explore", data: "2 GB", price: 10, saving: 30 },
+      { name: "Orbit Group", data: "7 GB", price: 19, saving: 29 },
+      { name: "Orbit Wild", data: "15 GB", price: 28, saving: 77 },
     ],
     "30 Days": [
-      { name: "Orbit Explore", data: "5 GB", price: 13, saving: 75 },
-      { name: "Orbit Group", data: "15 GB", price: 24, saving: 72 },
-      { name: "Orbit Wild", data: "30 GB", price: 38, saving: 28 },
+      { name: "Orbit Explore", data: "2 GB", price: 53, saving: 62 },
+      { name: "Orbit Group", data: "7 GB", price: 29, saving: 76 },
+      { name: "Orbit Wild", data: "15 GB", price: 39, saving: 44 },
     ],
   },
   "North America": {
@@ -149,7 +140,7 @@ const regionPlans = {
   },
 };
 
-// Summary cards shown in "All" tab (matching Image 1)
+// Summary cards shown in "All" tab
 const allRegions = [
   {
     region: "Europe & UK",
@@ -257,13 +248,124 @@ const getPlanFeatures = (data) => [
   },
 ];
 
-const durationOptions = [
-  "1–3 Days",
-  "4–7 Days",
-  "1–2 Weeks",
-  "3–4 Weeks",
-  "1 Month+",
+const durationOptions = ["8 Days", "15 Days", "30 Days"];
+
+// ── Region key mapping ───────────────────────────────────────
+// index 0 = "All" tab, 1–6 map to regionPlans keys
+const regionKeys = [
+  "",
+  "Europe & UK",
+  "North America",
+  "Asia Pacific",
+  "Americas",
+  "Middle East & CIS",
+  "Global",
 ];
+
+// Maps destination keywords → tab index
+const destinationToRegion = {
+  // Europe & UK (index 1)
+  uk: 1,
+  "united kingdom": 1,
+  england: 1,
+  scotland: 1,
+  wales: 1,
+  ireland: 1,
+  france: 1,
+  germany: 1,
+  italy: 1,
+  spain: 1,
+  portugal: 1,
+  netherlands: 1,
+  belgium: 1,
+  switzerland: 1,
+  austria: 1,
+  poland: 1,
+  greece: 1,
+  sweden: 1,
+  norway: 1,
+  denmark: 1,
+  finland: 1,
+  europe: 1,
+  eu: 1,
+  london: 1,
+  paris: 1,
+  berlin: 1,
+  rome: 1,
+  amsterdam: 1,
+  barcelona: 1,
+  madrid: 1,
+  lisbon: 1,
+  // North America (index 2)
+  usa: 2,
+  "united states": 2,
+  "north america": 2,
+  canada: 2,
+  mexico: 2,
+  "new york": 2,
+  "los angeles": 2,
+  toronto: 2,
+  vancouver: 2,
+  chicago: 2,
+  // Asia Pacific (index 3)
+  japan: 3,
+  china: 3,
+  korea: 3,
+  australia: 3,
+  "new zealand": 3,
+  india: 3,
+  thailand: 3,
+  singapore: 3,
+  philippines: 3,
+  indonesia: 3,
+  vietnam: 3,
+  malaysia: 3,
+  "asia pacific": 3,
+  asia: 3,
+  tokyo: 3,
+  seoul: 3,
+  sydney: 3,
+  bangkok: 3,
+  mumbai: 3,
+  delhi: 3,
+  beijing: 3,
+  shanghai: 3,
+  // Americas (index 4)
+  brazil: 4,
+  argentina: 4,
+  colombia: 4,
+  chile: 4,
+  peru: 4,
+  "south america": 4,
+  "latin america": 4,
+  venezuela: 4,
+  ecuador: 4,
+  bolivia: 4,
+  // Middle East & CIS (index 5)
+  dubai: 5,
+  uae: 5,
+  "united arab emirates": 5,
+  saudi: 5,
+  qatar: 5,
+  turkey: 5,
+  russia: 5,
+  "middle east": 5,
+  cis: 5,
+  israel: 5,
+  jordan: 5,
+  kuwait: 5,
+  bahrain: 5,
+  oman: 5,
+  iraq: 5,
+  iran: 5,
+  lebanon: 5,
+  egypt: 5,
+  // Global (index 6)
+  global: 6,
+  worldwide: 6,
+  international: 6,
+  world: 6,
+};
 
 // ── sub-components ───────────────────────────────────────────
 
@@ -317,7 +419,6 @@ function AllRegionsGrid({ onSelectRegion }) {
                 />
               )}
               <CardContent sx={{ p: 3 }}>
-                {/* Header: icon/label + region name + countries */}
                 <Box
                   sx={{
                     display: "flex",
@@ -365,7 +466,6 @@ function AllRegionsGrid({ onSelectRegion }) {
                   </Box>
                 </Box>
 
-                {/* Data + Validity split boxes */}
                 <Grid container spacing={1.5} sx={{ mb: 2.5 }}>
                   <Grid size={{ xs: 6 }}>
                     <Box
@@ -403,7 +503,6 @@ function AllRegionsGrid({ onSelectRegion }) {
                   </Grid>
                 </Grid>
 
-                {/* Price + CTA */}
                 <Box
                   sx={{
                     display: "flex",
@@ -457,7 +556,6 @@ function RegionDetailView({ regionKey }) {
 
   return (
     <Box>
-      {/* Region title */}
       <Typography
         variant="h6"
         fontWeight="bold"
@@ -467,7 +565,6 @@ function RegionDetailView({ regionKey }) {
         {regionKey}
       </Typography>
 
-      {/* Duration toggle */}
       <Box sx={{ display: "flex", justifyContent: "center", mb: 4 }}>
         <ToggleButtonGroup
           value={duration}
@@ -503,7 +600,6 @@ function RegionDetailView({ regionKey }) {
         </ToggleButtonGroup>
       </Box>
 
-      {/* Plan cards */}
       <Grid container spacing={3}>
         {plans.map(({ name, data, price, saving }) => (
           <Grid key={name} size={{ xs: 12, sm: 4 }}>
@@ -521,7 +617,6 @@ function RegionDetailView({ regionKey }) {
               }}
             >
               <CardContent sx={{ p: 3 }}>
-                {/* Name + price */}
                 <Box
                   sx={{
                     display: "flex",
@@ -549,7 +644,6 @@ function RegionDetailView({ regionKey }) {
                   </Box>
                 </Box>
 
-                {/* eSIM / pSIM badges */}
                 <Box sx={{ display: "flex", gap: 0.75, mb: 2 }}>
                   <Chip
                     label="eSIM"
@@ -573,7 +667,6 @@ function RegionDetailView({ regionKey }) {
                   />
                 </Box>
 
-                {/* Feature list */}
                 <Box
                   sx={{
                     display: "flex",
@@ -595,7 +688,6 @@ function RegionDetailView({ regionKey }) {
                   ))}
                 </Box>
 
-                {/* Savings badge */}
                 <Box
                   sx={{
                     display: "flex",
@@ -617,7 +709,6 @@ function RegionDetailView({ regionKey }) {
                   </Typography>
                 </Box>
 
-                {/* Buy Now */}
                 <Button
                   fullWidth
                   variant="contained"
@@ -644,13 +735,31 @@ function RegionDetailView({ regionKey }) {
 
 // ── main component ────────────────────────────────────────────
 export default function Plans() {
-  const [tab, setTab] = useState(1); // default to Europe & UK detail view
+  const [tab, setTab] = useState(1);
   const [destination, setDestination] = useState("");
   const [duration, setDuration] = useState("");
+  const [noMatch, setNoMatch] = useState(false);
 
-  // map tab index → exact key in regionPlans (index 0 = "All" shows AllRegionsGrid)
-  const regionKeys = ["", "Europe & UK"];
   const showDetail = tab !== 0;
+
+  // ── AI Finder: match destination text → tab index ─────────
+  const handleFindPlan = () => {
+    const key = destination.trim().toLowerCase();
+    // Try exact match first, then partial
+    let idx = destinationToRegion[key];
+    if (idx === undefined) {
+      const found = Object.keys(destinationToRegion).find(
+        (k) => key.includes(k) || k.includes(key),
+      );
+      idx = found ? destinationToRegion[found] : undefined;
+    }
+    if (idx !== undefined) {
+      setTab(idx);
+      setNoMatch(false);
+    } else {
+      setNoMatch(true);
+    }
+  };
 
   return (
     <Box sx={{ py: { xs: 6, md: 8 }, bgcolor: "grey.50" }}>
@@ -730,7 +839,11 @@ export default function Plans() {
                 fullWidth
                 placeholder="Enter destination or country"
                 value={destination}
-                onChange={(e) => setDestination(e.target.value)}
+                onChange={(e) => {
+                  setDestination(e.target.value);
+                  setNoMatch(false);
+                }}
+                onKeyDown={(e) => e.key === "Enter" && handleFindPlan()}
                 variant="outlined"
                 sx={{
                   bgcolor: "common.white",
@@ -783,6 +896,7 @@ export default function Plans() {
                 fullWidth
                 variant="contained"
                 size="large"
+                onClick={handleFindPlan}
                 sx={{
                   bgcolor: "common.white",
                   color: TEAL,
@@ -796,9 +910,50 @@ export default function Plans() {
               >
                 Find My Perfect Plan
               </Button>
+              {noMatch && (
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: "rgba(255,255,255,0.9)",
+                    mt: 1,
+                    display: "block",
+                    textAlign: "center",
+                  }}
+                >
+                  No region found for "{destination}". Try a country name.
+                </Typography>
+              )}
             </Grid>
           </Grid>
         </Paper>
+
+        {/* Region tabs */}
+        <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap", mb: 3 }}>
+          {[
+            "All",
+            "Europe & UK",
+            "North America",
+            "Asia Pacific",
+            "Americas",
+            "Middle East & CIS",
+            "Global",
+          ].map((label, i) => (
+            <Chip
+              key={label}
+              label={label}
+              onClick={() => setTab(i)}
+              sx={{
+                fontWeight: tab === i ? 700 : 500,
+                bgcolor: tab === i ? TEAL : "white",
+                color: tab === i ? "white" : "text.secondary",
+                border: "1px solid",
+                borderColor: tab === i ? TEAL : "divider",
+                cursor: "pointer",
+                "&:hover": { bgcolor: tab === i ? TEAL : `${TEAL}10` },
+              }}
+            />
+          ))}
+        </Box>
 
         {/* Content: All view or Region detail view */}
         {showDetail ? (

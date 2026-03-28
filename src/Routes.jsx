@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 // Main
 import Home from "./pages/Home";
-import AboutUs from "./pages/aboutus";
+import AboutUs from "./pages/About-us/aboutus.jsx";
 import Plans from "./pages/plans";
 import Support from "./pages/support";
 
@@ -18,7 +18,12 @@ import EcosystemPartners from "./pages/solutions/ecosystem-partners";
 import Travelers from "./pages/ecosystems/travelers";
 import TravelPartner from "./pages/ecosystems/travel-partner";
 import Impact from "./pages/ecosystems/our-impact";
-import Layout from "./layout/layout";
+
+// Get In Touch Pages
+import Coverage from "./pages/Coverage";
+import RefundReturns from "./pages/Refund_returns";
+
+import Layout from "./layout/layout.jsx";
 export const AppRoutes = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -34,11 +39,15 @@ export const AppRoutes = createBrowserRouter(
         <Route path="/solutions/enterprises" element={<Enterprises />} />
         <Route path="/solutions/partners" element={<EcosystemPartners />} />
 
-        {/* Ecosystem */}
+        {/* Ecosystem */}``
         <Route path="/ecosystem/travelers" element={<Travelers />} />
         <Route path="/ecosystem/business" element={<Enterprises />} />
         <Route path="/ecosystem/agencies" element={<TravelPartner />} />
         <Route path="/ecosystem/impact" element={<Impact />} />
+
+        {/* Get In Touch */}
+        <Route path="/coverage" element={<Coverage />} />
+        <Route path="/refund-returns" element={<RefundReturns />} />
       </Route>
     </>,
   ),

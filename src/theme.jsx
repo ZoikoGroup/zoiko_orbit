@@ -33,6 +33,7 @@ const theme = createTheme({
     text: {
       primary: "#1a2a4a",
       secondary: "#64748b",
+      tertiary: "#3d3d3d",
       disabled: "#aab4be",
     },
     divider: "#e4eaed",
@@ -54,13 +55,13 @@ const theme = createTheme({
 
   // ── Typography ────────────────────────────────────────────────────────────
   typography: {
-    fontFamily: "'Roboto','Inter', 'Helvetica Neue', Arial, sans-serif",
-    h1: { fontWeight: 900, lineHeight: 1.15, color: "red" },
+    fontFamily: "'poppins',sans-serif",
+    h1: { fontWeight: 900, lineHeight: 1.15 },
     h2: { fontWeight: 800, lineHeight: 1.2 },
     h3: { fontWeight: 700, lineHeight: 1.25 },
     h4: { fontWeight: 700, lineHeight: 1.3 },
     h5: { fontWeight: 700, lineHeight: 1.35 },
-    h6: { fontWeight: 800, lineHeight: 1.4 },
+    h6: { fontWeight: 700, lineHeight: 1.4 },
     subtitle1: { fontWeight: 600 },
     subtitle2: { fontWeight: 600 },
     body1: { lineHeight: 1.75 },
