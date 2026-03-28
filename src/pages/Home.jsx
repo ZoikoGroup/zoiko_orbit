@@ -2,6 +2,14 @@ import { Box, Typography, Button, Container } from "@mui/material";
 import AudienceCards from "../components/AudienceCards";
 import Plans from "../components/Plans";
 import GlobalConnectivity from "../components/GlobalConnectivity";
+import EcosystemPartners from "../components/EcosystemPartners";
+import GlobalCoverage from "../components/GlobalCoverage";
+import TravelConnectivity from "../components/TravelConnectivity";
+import Testimonials from "../components/Testimonials";
+import TrustedBrands from "../components/TrustedBrands";
+import ConnectCTA from "../components/ConnectCTA";
+// import CTABanner from "../components/CTABanner";
+
 export default function Home() {
   return (
     <>
@@ -105,13 +113,36 @@ export default function Home() {
         {/* Extra white space at the bottom so the cards have room to overlap */}
         <Box sx={{ height: { xs: 60, md: 80 } }} />
       </Box>
+
       {/* ── Audience Cards (overlap hero bottom) ─────────────────────── */}
       <AudienceCards />
+
       {/* ── Plans ────────────────────────────────────────────────────── */}
       <Plans />
 
       {/* ── Global Connectivity ──────────────────────────────────────── */}
       <GlobalConnectivity />
+
+      {/* ── Eco System Partners ──────────────────────────────────────── */}
+      <EcosystemPartners />
+
+      {/* ── Global Coverage ──────────────────────────────────────── */}
+      <GlobalCoverage />
+
+      {/* ── Travel Connectivity banner ───────────────────────────────── */}
+      <TravelConnectivity />
+
+      {/* ── Testimonials ─────────────────────────────────────────────── */}
+      <Testimonials />
+
+      {/* ── Trusted Brands ───────────────────────────────────────────── */}
+      <TrustedBrands />
+
+      {/* ── Connect CTA banner ───────────────────────────────────────── */}
+      <ConnectCTA />
+
+      {/* ── CTA / Contact ──────────────────────────────────────────────*/}
+      {/* <CTABanner />  */}
     </>
   );
 }
