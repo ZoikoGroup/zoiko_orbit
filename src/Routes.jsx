@@ -10,9 +10,9 @@ import Plans from "./pages/plans";
 import Support from "./pages/support";
 
 // Solutions
-import PersonalTravelers from "./pages/solutions/personal-travelers";
-import Enterprises from "./pages/solutions/enterprises";
-import EcosystemPartners from "./pages/solutions/ecosystem-partners";
+import PersonalTravelers from "./pages/solutions/PersonalTravelers/personal-travelers";
+import Enterprises from "./pages/solutions/Enterprises/enterprises";
+import EcosystemPartners from "./pages/solutions/EcosystemPartners/ecosystem-partners.jsx";
 
 // Ecosystem
 import Travelers from "./pages/ecosystems/travelers";
@@ -33,18 +33,15 @@ export const AppRoutes = createBrowserRouter(
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/plans" element={<Plans />} />
         <Route path="/support" element={<Support />} />
-
         {/* Solutions */}
         <Route path="/solutions/personal" element={<PersonalTravelers />} />
         <Route path="/solutions/enterprises" element={<Enterprises />} />
         <Route path="/solutions/partners" element={<EcosystemPartners />} />
-
-        {/* Ecosystem */}``
+        {/* Ecosystem */}
         <Route path="/ecosystem/travelers" element={<Travelers />} />
         <Route path="/ecosystem/business" element={<Enterprises />} />
         <Route path="/ecosystem/agencies" element={<TravelPartner />} />
         <Route path="/ecosystem/impact" element={<Impact />} />
-
         {/* Get In Touch */}
         <Route path="/coverage" element={<Coverage />} />
         <Route path="/refund-returns" element={<RefundReturns />} />
