@@ -1,6 +1,7 @@
 import { Box, Typography, Button, Container } from "@mui/material";
 import AudienceCards from "../components/AudienceCards";
 import Plans from "../components/Plans";
+import WildlifeImpact from "../components/WildlifeImpact";
 import GlobalConnectivity from "../components/GlobalConnectivity";
 import EcosystemPartners from "../components/EcosystemPartners";
 import GlobalCoverage from "../components/GlobalCoverage";
@@ -119,6 +120,9 @@ export default function Home() {
 
       {/* ── Plans ────────────────────────────────────────────────────── */}
       <Plans />
+
+      {/* ── Wildlife Impact ──────────────────────────────────────────── */}
+      <WildlifeImpact />
 
       {/* ── Global Connectivity ──────────────────────────────────────── */}
       <GlobalConnectivity />
