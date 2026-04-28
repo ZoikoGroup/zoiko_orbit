@@ -1,6 +1,6 @@
 import PersonalTravelerHero from "./components/PersonalTravelerHero";
 import HowItWorks from "./components/HowItWorks";
-import Plans from "../../../components/plans";
+import Plans from "../../../components/Plans";
 // import PlansEuropeUK from "./components/PlansEuropeUK";
 import WhyChooseZoikoOrbit from "./components/WhyChooseZoikoOrbit";
 // import DestinationSelector from "./components/DestinationSelector";
