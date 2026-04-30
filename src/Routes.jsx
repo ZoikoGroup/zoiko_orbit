@@ -23,6 +23,11 @@ import Impact from "./pages/ecosystems/our-impact";
 import Coverage from "./pages/Coverage";
 import RefundReturns from "./pages/Refund_returns";
 
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Myaccount from "./pages/Myaccount";
+
+
 import Layout from "./layout/layout.jsx";
 export const AppRoutes = createBrowserRouter(
   createRoutesFromElements(
@@ -45,6 +50,12 @@ export const AppRoutes = createBrowserRouter(
         {/* Get In Touch */}
         <Route path="/coverage" element={<Coverage />} />
         <Route path="/refund-returns" element={<RefundReturns />} />
+
+        {/* Login */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/myaccount" element={<Myaccount />} />
+
       </Route>
     </>,
   ),

@@ -25,7 +25,7 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import { useTheme } from "@mui/material/styles";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // ✅ UPDATED
+import { Link } from "react-router-dom";
 
 const TEAL = "#00708a";
 
@@ -59,6 +59,7 @@ const navBtnSx = {
   fontWeight: 400,
   fontSize: "0.95rem",
   px: 1.5,
+  //"&:hover": { backgroundColor: "rgba(255,255,255,0.15)" },
 };
 
 const mobileItemSx = {
@@ -71,22 +72,9 @@ export default function Header() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const navigate = useNavigate(); // ✅ ADDED
-
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorEls, setAnchorEls] = useState({});
   const [mobileOpen, setMobileOpen] = useState({});
-
-  // ✅ ADDED
-  const handleMyOrbit = () => {
-    const token = localStorage.getItem("token");
-
-    if (token) {
-      navigate("/myaccount");
-    } else {
-      navigate("/login");
-    }
-  };
 
   const openMenu = (e, label) =>
     setAnchorEls((p) => ({ ...p, [label]: e.currentTarget }));
@@ -188,12 +176,10 @@ export default function Header() {
                   ),
                 )}
 
-              {/* ✅ UPDATED BUTTON */}
               <Grid>
                 <Button
                   variant="outlined"
                   startIcon={<PersonOutlineIcon />}
-                  onClick={handleMyOrbit}
                   sx={{
                     color: "white",
                     borderColor: "white",
@@ -224,7 +210,6 @@ export default function Header() {
               )}
             </Grid>
           </Container>
-
           {/* Mobile Menu Icon */}
           {isMobile && (
             <IconButton color="inherit" onClick={() => setDrawerOpen(true)}>
@@ -308,23 +293,6 @@ export default function Header() {
               )}
             </Box>
           ))}
-
-          {/* ✅ ADDED MOBILE BUTTON */}
-          <ListItem>
-            <Button
-              fullWidth
-              variant="outlined"
-              startIcon={<PersonOutlineIcon />}
-              onClick={handleMyOrbit}
-              sx={{
-                color: "white",
-                borderColor: "white",
-                mt: 2,
-              }}
-            >
-              My Orbit
-            </Button>
-          </ListItem>
         </List>
       </Drawer>
     </>
