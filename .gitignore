@@ -11,6 +11,13 @@ node_modules
 dist
 dist-ssr
 *.local
+<<<<<<< HEAD
+=======
+*.zip
+dist/
+build/
+.env
+>>>>>>> 9d2543a (traveller page)
 
 # Editor directories and files
 .vscode/*

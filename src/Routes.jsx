@@ -27,6 +27,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Myaccount from "./pages/Myaccount";
 
+<<<<<<< HEAD
+=======
+import TravelPartners from "./pages/travelers/travel-partners";
+>>>>>>> 9d2543a (traveller page)
 
 import Layout from "./layout/layout.jsx";
 export const AppRoutes = createBrowserRouter(
@@ -43,7 +47,11 @@ export const AppRoutes = createBrowserRouter(
         <Route path="/solutions/enterprises" element={<Enterprises />} />
         <Route path="/solutions/partners" element={<EcosystemPartners />} />
         {/* Ecosystem */}
+<<<<<<< HEAD
         <Route path="/ecosystem/travelers" element={<Travelers />} />
+=======
+        <Route path="/travel-partners" element={<TravelPartners />} />
+>>>>>>> 9d2543a (traveller page)
         <Route path="/ecosystem/business" element={<Enterprises />} />
         <Route path="/ecosystem/agencies" element={<TravelPartner />} />
         <Route path="/ecosystem/impact" element={<Impact />} />
