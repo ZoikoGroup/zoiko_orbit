@@ -8,6 +8,10 @@ import Home from "./pages/Home";
 import AboutUs from "./pages/About-us/aboutus.jsx";
 import Plans from "./pages/plans";
 import Support from "./pages/support";
+import { SouthAmericaEsim } from "./pages/SouthAmericaEsim.jsx";
+
+
+import EsimPlansSection from "./pages/EsimPlansSection";
 
 // Solutions
 import PersonalTravelers from "./pages/solutions/PersonalTravelers/personal-travelers";
@@ -27,10 +31,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Myaccount from "./pages/Myaccount";
 
-<<<<<<< HEAD
-=======
 import TravelPartners from "./pages/travelers/travel-partners";
->>>>>>> 9d2543a (traveller page)
 
 import Layout from "./layout/layout.jsx";
 export const AppRoutes = createBrowserRouter(
@@ -47,11 +48,7 @@ export const AppRoutes = createBrowserRouter(
         <Route path="/solutions/enterprises" element={<Enterprises />} />
         <Route path="/solutions/partners" element={<EcosystemPartners />} />
         {/* Ecosystem */}
-<<<<<<< HEAD
-        <Route path="/ecosystem/travelers" element={<Travelers />} />
-=======
         <Route path="/travel-partners" element={<TravelPartners />} />
->>>>>>> 9d2543a (traveller page)
         <Route path="/ecosystem/business" element={<Enterprises />} />
         <Route path="/ecosystem/agencies" element={<TravelPartner />} />
         <Route path="/ecosystem/impact" element={<Impact />} />
@@ -63,6 +60,8 @@ export const AppRoutes = createBrowserRouter(
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/myaccount" element={<Myaccount />} />
+        <Route path="/esim" element={<EsimPlansSection />} />
+        <Route path="/south-america" element={<SouthAmericaEsim />} />
 
       </Route>
     </>,

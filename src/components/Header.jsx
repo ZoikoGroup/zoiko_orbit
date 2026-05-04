@@ -46,7 +46,7 @@ const navLinks = [
     label: "Ecosystem Partners",
     path: "/ecosystem",
     dropdown: [
-      { label: "Travelers", path: "/ecosystem/travelers" },
+      { label: "Travelers", path: "/travel-partners" },
       { label: "Businesses & Enterprises", path: "/solutions/enterprises" },
       { label: "Travel Partners & Agencies", path: "/ecosystem/agencies" },
       { label: "Our Impact", path: "/ecosystem/impact" },

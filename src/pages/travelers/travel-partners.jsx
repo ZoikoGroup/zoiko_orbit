@@ -35,7 +35,7 @@ export default function TravelPartnersPage() {
       <IntegrateSection />
       <HowToInstallSection />
       <PartnerFormSection />
-      <FooterSection />
+  
     </Box>
   );
 }
