@@ -19,8 +19,7 @@ export default function Register() {
     username: "",
     email: "",
     password: "",
-    first_name: "",
-    last_name: "",
+    password2: "",
   });
 
   const [error, setError] = useState("");
@@ -36,6 +35,17 @@ export default function Register() {
     setError("");
     setSuccess("");
 
+    // ✅ Basic validation
+    if (!form.username || !form.email || !form.password) {
+      setError("All fields are required");
+      return;
+    }
+
+    if (form.password !== form.password2) {
+      setError("Passwords do not match");
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -43,23 +53,34 @@ export default function Register() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "X-Frontend-Origin": window.location.origin, // ✅ same as Next.js
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          username: form.username.trim(),
+          email: form.email.trim(),
+          password: form.password,
+          password2: form.password2,
+        }),
       });
 
       const data = await res.json();
 
-      if (res.ok) {
-        setSuccess("Account created successfully!");
+      if (!res.ok) {
+        const msg =
+          typeof data === "object"
+            ? Object.values(data).flat().join(" | ")
+            : data.message;
 
-        setTimeout(() => {
-          navigate("/login");
-        }, 1500);
-      } else {
-        setError(data.message || "Registration failed");
+        throw new Error(msg || "Registration failed");
       }
+
+      setSuccess(data.message || "Account created successfully!");
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
     } catch (err) {
-      setError("Network error");
+      setError(err.message || "Network error");
     } finally {
       setLoading(false);
     }
@@ -76,29 +97,17 @@ export default function Register() {
       }}
     >
       <Container maxWidth="xs">
-        <Box component="form" onSubmit={handleRegister} sx={{ p: 4, bgcolor: "#fff", borderRadius: 2 }}>
+        <Box
+          component="form"
+          onSubmit={handleRegister}
+          sx={{ p: 4, bgcolor: "#fff", borderRadius: 2 }}
+        >
           <Typography variant="h5" fontWeight={700}>
             Create Account
           </Typography>
 
           {error && <Alert severity="error">{error}</Alert>}
           {success && <Alert severity="success">{success}</Alert>}
-
-          <TextField
-            name="first_name"
-            label="First Name"
-            fullWidth
-            sx={{ mt: 2 }}
-            onChange={handleChange}
-          />
-
-          <TextField
-            name="last_name"
-            label="Last Name"
-            fullWidth
-            sx={{ mt: 2 }}
-            onChange={handleChange}
-          />
 
           <TextField
             name="username"
@@ -119,6 +128,15 @@ export default function Register() {
           <TextField
             name="password"
             label="Password"
+            type="password"
+            fullWidth
+            sx={{ mt: 2 }}
+            onChange={handleChange}
+          />
+
+          <TextField
+            name="password2"
+            label="Confirm Password"
             type="password"
             fullWidth
             sx={{ mt: 2 }}
